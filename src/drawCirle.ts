@@ -19,16 +19,11 @@ const sketch = (p: p5) => {
 
   /** フレームごとの描画処理 */
   p.draw = () => {
-    // 塗り色を設定
-    p.fill(p.lerpColor(color2, color1, color1amount));
-    // 画面中央を原点に
-    p.translate(p.width / 2, p.height / 2);
-    // フレーム数分（1フレームあたり13度）回転させる
-    p.rotate(p.frameCount * 13);
-    // 楕円を描く
-    p.ellipse(p.frameCount / 2, 0, p.frameCount, p.frameCount / 3);
-    // 「描画色1の強さ」を少し弱くする
-    color1amount *= 0.995;
+    p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色を設定
+    p.translate(p.width / 2, p.height / 2); // 画面中央を原点に
+    p.rotate(p.frameCount * 13);  // フレーム数分（1フレームあたり13度）回転させる
+    p.ellipse(p.frameCount / 2, 0, p.frameCount, p.frameCount / 3); // 楕円を描く
+    color1amount *= 0.995; // 「描画色1の強さ」を少し弱くする
   }
 }
 
