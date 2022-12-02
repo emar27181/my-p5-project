@@ -13,6 +13,8 @@
     - ~~もしかしたら上のbuildを試したらできる？？~~
       - .parcel-cache、node_modules、distのいずれを消してbuildしなおしても名前の変更を反映出来なかった
 
+- point関数がうまく機能していなさそう？(drawLine.ts参照)
+
 <br>
 
 # アイデア案
