@@ -32,19 +32,22 @@ const sketch = (p: p5) => {
       case 0:
         x++;
         y++;
+        break;
       case 1:
         x--;
         y++;
+        break;
       case 2:
         x--;
         y--;
+        break;
       case 3:
         x++;
         y--;
+        break;
       default:
-        x -= 0.5;
-        y -= 0.5;
-      //console.log("this is default");
+        console.log("this is default");
+        break;
     }
 
 
