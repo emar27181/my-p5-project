@@ -8,6 +8,7 @@ const sketch = (p: p5) => {
   const color2 = p.color("#000000"); //描画色2(黒)
   let color1amount = 1; // 描画色1の強さ
   let i = 0, x = 0, y = 0;
+  let isPrime = false;
 
   /* 初期化処理 */
   p.setup = () => {
@@ -20,31 +21,45 @@ const sketch = (p: p5) => {
   p.draw = () => {
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
 
-    console.log("i:     " + i);
-    console.log("i % 4: " + i % 4);
-
     // 点の描画
-    p.ellipse(p.width / 2 + x, p.height / 2 + y, 3, 3);
+    // p.ellipse(p.width / 2 + x, p.height / 2 + y, 3, 3);
+    p.ellipse(x, y, 3, 3);
 
+    //i: 割られる数
+    //j: 割る数
     i++;
 
-    switch (i % 4) {
-      case 0:
+    // 素数判定 
+    if (i === 2) {
+      isPrime = true;
+    }
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        isPrime = false;
+        break;
+      }
+      if (j === i - 1) {
+        isPrime = true;
+        break;
+      }
+    }
+
+    // 確認用出力
+    if (isPrime === true) {
+      console.log("i: " + i);
+    }
+
+    //次に打つ点の制御
+    switch (isPrime) {
+      case true:
         x++;
         y++;
         break;
-      case 1:
-        x--;
-        y++;
-        break;
-      case 2:
-        x--;
-        y--;
-        break;
-      case 3:
+
+      case false:
         x++;
         y--;
-        break;
+
       default:
         console.log("this is default");
         break;
