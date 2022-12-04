@@ -22,7 +22,7 @@ const sketch = (p: p5) => {
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
 
     // 点の描画
-    const div = 4;
+    const div = 0.5;
     p.ellipse(p.width / 2 + x / div, p.height / 2 + y / div, 1, 1);
 
     //i: 割られる数
