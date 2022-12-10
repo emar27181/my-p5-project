@@ -10,6 +10,11 @@ const sketch = (p: p5) => {
   /** 初期化処理 */
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight); //キャンバスの作成
+    console.log("p.windowWidth: ", p.windowHeight);
+    console.log("p.windowHeight: ", p.windowHeight);
+    console.log("p.width", p.height);
+    console.log("p.width", p.width);
+
     p.background("#000000"); // 背景色を設定(黒)
     p.noStroke(); // 線なし（塗りつぶしのみ）に設定
   };
