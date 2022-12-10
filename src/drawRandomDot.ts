@@ -28,7 +28,9 @@ const sketch = (p: p5) => {
     console.log("x = ", x);
     console.log("y = ", y);
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
-    p.ellipse(x, y, 10, 10); // 楕円の描画(中央)
+    p.ellipse(x, y, 1, 1); // 楕円の描画(中央)
+    p.fill(yellow); // 塗り色の設定
+    p.ellipse(p.width / 2, p.height / 2, 150, 150); // 楕円の描画(中央)
   };
 }
 
