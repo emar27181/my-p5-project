@@ -5,6 +5,7 @@ const sketch = (p: p5) => {
   //色の指定
   const color1 = p.color("#ffffff"); //描画色1(白)
   const color2 = p.color("#000000"); //描画色2(黒)
+  const yellow = p.color("#FFE011");
   let color1amount = 1; // 描画色1の強さ
 
   /** 初期化処理 */
