@@ -9,6 +9,10 @@ const sketch = (p: p5) => {
 
   /** 初期化処理 */
   p.setup = () => {
+    //p.windowWidth: 464
+    //p.windowHeight: 464
+    //p.width: 464
+    //p.height: 648
     p.createCanvas(p.windowWidth, p.windowHeight); //キャンバスの作成
     p.background("#000000"); // 背景色を設定(黒)
     p.noStroke(); // 線なし（塗りつぶしのみ）に設定
