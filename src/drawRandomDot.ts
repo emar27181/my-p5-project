@@ -16,8 +16,9 @@ const sketch = (p: p5) => {
 
   /** フレームごとの描画処理 */
   p.draw = () => {
-    let x = Math.random();
-    let y = Math.random();
+    const mul = 1000;
+    let x = mul * Math.random();
+    let y = mul * Math.random();
     console.log("x = ", x);
     console.log("y = ", y);
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
