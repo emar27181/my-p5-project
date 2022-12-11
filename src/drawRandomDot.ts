@@ -10,27 +10,39 @@ const sketch = (p: p5) => {
 
   /** 初期化処理 */
   p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight); //キャンバスの作成
-    console.log("p.windowWidth: ", p.windowHeight);
-    console.log("p.windowHeight: ", p.windowHeight);
-    console.log("p.width", p.height);
-    console.log("p.width", p.width);
-
+    p.createCanvas(512, 512); //キャンバスの作成
     p.background("#000000"); // 背景色を設定(黒)
     p.noStroke(); // 線なし（塗りつぶしのみ）に設定
   };
 
+  let InCircleDot = 0;
+  let allDot = 0;
+
   /** フレームごとの描画処理 */
   p.draw = () => {
-    const mul = 1000;
+    const mul = 512;
     let x = mul * Math.random();
     let y = mul * Math.random();
+
+    //モンテカルロ法によるπの近似値の測定
+    let distance = Math.sqrt(x * x + y * y);
+    allDot++;
+    if(distance < 512){InCircleDot++;}
+    let nearlyPi = 4 * InCircleDot / allDot;
+
+    //確認用出力
+    console.log("allDot: " + allDot);
     console.log("x = ", x);
     console.log("y = ", y);
+    console.log("InCircleDot: " + InCircleDot);
+    console.log("distance: " + distance);
+    console.log("nearlyPi: " + nearlyPi);
+
+
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
     p.ellipse(x, y, 1, 1); // 楕円の描画(中央)
     p.fill(yellow); // 塗り色の設定
-    p.ellipse(p.width / 2, p.height / 2, 150, 150); // 楕円の描画(中央)
+    p.ellipse(0, 0, 1024, 1024); // 円弧の描画
   };
 }
 
