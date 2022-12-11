@@ -14,10 +14,17 @@ const sketch = (p: p5) => {
         p.noStroke(); // 線なし（塗りつぶしのみ）に設定
     };
 
+    
+    let x = 0;
     /** フレームごとの描画処理 */
     p.draw = () => {
         p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
-        p.ellipse(p.width / 2, p.height / 2, 10, 10); // 楕円の描画(中央)
+
+        x++;
+            let radian = p.TWO_PI / 150 * x; 
+            let y = 100 * p.sin(radian);
+            p.ellipse(x, -y + p.height / 2, 1, 1); // 楕円の描画(中央)
+
     };
 }
 
