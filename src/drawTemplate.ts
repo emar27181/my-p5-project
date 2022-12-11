@@ -9,6 +9,7 @@ const sketch = (p: p5) => {
 
   /** 初期化処理 */
   p.setup = () => {
+    //デフォルト値(?)一覧
     //p.windowWidth: 464
     //p.windowHeight: 464
     //p.width: 464
