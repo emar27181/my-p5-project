@@ -1,3 +1,4 @@
+// 現段階ではtsファイルのみ読み込むことができるため、今後tsファイルの読み込み機能の追加、又はtsファイルへこのファイルを変換する必要有
 var HEIGHT_SIZE = 600
 var CENTER_WINDOW_WIDTH = WIDTH_SIZE / 2;
 var CENTER_WINDOW_HEIGHT = HEIGHT_SIZE / 2;
