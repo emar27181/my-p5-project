@@ -47,6 +47,7 @@ const sketch = (p: p5) => {
             x++;
             let radian = p.TWO_PI / 150 * x;
             let y = amplitude * p.sin(radian);
+            p.ellipse(x, y + p.height / 2, 1, 1); // 点の描画
             p.ellipse(x, -y + p.height / 2, 1, 1); // 点の描画
         }
         //左進行の場合
@@ -54,6 +55,7 @@ const sketch = (p: p5) => {
             x--;
             let radian = p.TWO_PI / 150 * x;
             let y = amplitude * p.sin(radian);
+            p.ellipse(x, y + p.height / 2, 1, 1); // 点の描画
             p.ellipse(x, -y + p.height / 2, 1, 1); // 点の描画
         }
 
