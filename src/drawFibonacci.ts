@@ -30,7 +30,20 @@ const sketch = (p: p5) => {
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
     p.ellipse(p.width / 2 + x / div, p.height / 2 + y / div, 1, 1); // 楕円の描画(中央)
 
-    //フィボナッチ数の判定
+
+    const drawVerticalLine = (x: number) => {
+      for (let i = 0; i < p.height; i++) {
+        p.ellipse(p.width / 2 + x / div, i, 1, 1);
+      }
+    }
+
+    const drawHorizontalLine = (y: number) => {
+      for (let i = 0; i < p.width; i++) {
+        p.ellipse(i, p.height / 2 + y / div, 1, 1);
+      }
+    }
+
+    //フィボナッチ数の判定と進路の変更
     if (frameCount == 1) {
       direction++;
     }
@@ -41,6 +54,13 @@ const sketch = (p: p5) => {
       let tmp = a;
       a = b;
       b = tmp + a;
+
+      if(direction % 2 == 0){
+        drawHorizontalLine(y);
+      }
+      else {
+        drawVerticalLine(x);
+      }
 
       direction++;
       // 確認用出力
