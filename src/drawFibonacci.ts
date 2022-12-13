@@ -55,6 +55,7 @@ const sketch = (p: p5) => {
       a = b;
       b = tmp + a;
 
+      //縦横線の描画の呼び出し
       if(direction % 2 == 0){
         drawHorizontalLine(y);
       }
