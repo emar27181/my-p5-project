@@ -8,7 +8,9 @@ const sketch = (p: p5) => {
   let color1amount = 1; // 描画色1の強さ
 
   let i = 0, x = 0, y = 0, direction = 0, frameCount = 0;
-  let isFibonacci = false;
+  let a = 1, b = 1;
+  const div = 5;
+
 
   /** 初期化処理 */
   p.setup = () => {
@@ -26,23 +28,28 @@ const sketch = (p: p5) => {
   p.draw = () => {
     frameCount++;
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
-    p.ellipse(p.width / 2 + x, p.height / 2 + y, 1, 1); // 楕円の描画(中央)
+    p.ellipse(p.width / 2 + x / div, p.height / 2 + y / div, 1, 1); // 楕円の描画(中央)
 
     //フィボナッチ数の判定
-    if(frameCount == 1){
-      isFibonacci = true;
+    if (frameCount == 1) {
+      direction++;
     }
-    else{
-      isFibonacci = false;
-    }
+    else if (frameCount == (a + b)) {
+      //フィボナッチ数の更新
+      //a: a_n
+      //b: a_n+1
+      let tmp = a;
+      a = b;
+      b = tmp + a;
 
-    if (isFibonacci === true) {
       direction++;
       // 確認用出力
-      console.log("i: " + i);
+      console.log("frameCount: " + frameCount);
       console.log("direction: " + direction);
       console.log("direction % 4: " + direction % 4);
     }
+    else { }
+
 
     //次に打つ点の制御
     switch (direction % 4) {
