@@ -46,17 +46,19 @@ const sketch = (p: p5) => {
         if (direction == 0) {
             x++;
             let radian = p.TWO_PI / 150 * x;
-            let y = amplitude * p.sin(radian);
-            p.ellipse(x, y + p.height / 2, 1, 1); // 点の描画
-            p.ellipse(x, -y + p.height / 2, 1, 1); // 点の描画
+            let ySin = amplitude * p.sin(radian);
+            let yCos = amplitude * p.cos(radian);
+            p.ellipse(x, -ySin + p.height / 2, 1, 1); // 点の描画
+            p.ellipse(x, -yCos + p.height / 2, 1, 1); // 点の描画
         }
         //左進行の場合
         else if (direction == 1) {
             x--;
             let radian = p.TWO_PI / 150 * x;
-            let y = amplitude * p.sin(radian);
-            p.ellipse(x, y + p.height / 2, 1, 1); // 点の描画
-            p.ellipse(x, -y + p.height / 2, 1, 1); // 点の描画
+            let ySin = amplitude * p.sin(radian);
+            let yCos = amplitude * p.cos(radian);
+            p.ellipse(x, -ySin + p.height / 2, 1, 1); // 点の描画
+            p.ellipse(x, -yCos + p.height / 2, 1, 1); // 点の描画
         }
 
     };
