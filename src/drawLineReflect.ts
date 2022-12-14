@@ -34,7 +34,17 @@ const sketch = (p: p5) => {
       else if (p.key === 'D' || p.key === 'd') { direction = 0; }
     }
 
-    // 壁の反射の判定(仮実装)
+    //一定確率で進路変更
+    let random10 = p.random(10);
+    let random4 = p.random(4);
+    if (random10 <= 2) {
+      direction = Math.floor(random4);
+    }
+    //確認用出力
+    console.log("random10: " + random10);
+    console.log("random4: " + random4);
+
+    // 壁の反射の判定(上下左右のみ)
     if (x === 0) {
       // 左端の場合
       direction = 0;
