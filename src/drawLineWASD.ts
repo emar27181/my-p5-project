@@ -31,11 +31,21 @@ const sketch = (p: p5) => {
 
 
     if (p.keyIsPressed) {
-      direction++;
+      //進路不確定モード
+      // direction++; 
+
+      //WASDモード
+      if(p.key === 'W'){ direction = 3;}
+      else if(p.key === 'A'){direction = 2;}
+      else if(p.key === 'S'){direction = 1;}
+      else if(p.key === 'D'){direction = 0;}
+
       // 確認用出力
+      /*
       console.log("i: " + i);
       console.log("direction: " + direction);
       console.log("direction % 4: " + direction % 4);
+      */
     }
 
     //次に打つ点の制御
