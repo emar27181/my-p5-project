@@ -35,10 +35,10 @@ const sketch = (p: p5) => {
       // direction++; 
 
       //WASDモード
-      if(p.key === 'W'){ direction = 3;}
-      else if(p.key === 'A'){direction = 2;}
-      else if(p.key === 'S'){direction = 1;}
-      else if(p.key === 'D'){direction = 0;}
+      if(p.key === 'W' || p.key === 'w'){ direction = 3;}
+      else if(p.key === 'A'|| p.key === 'a'){direction = 2;}
+      else if(p.key === 'S'|| p.key === 's'){direction = 1;}
+      else if(p.key === 'D'|| p.key === 'd'){direction = 0;}
 
       // 確認用出力
       /*
