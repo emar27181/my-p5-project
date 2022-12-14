@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "parcel src/index.html --open",
     "build": "parcel build src/index.html",
-    "start": "parcel src/index.html --open && parcel build src/index.html"
+    "start": "parcel src/index.html --open && parcel build src/index.html",
+    "restart": "rm -rf .parcel-cache && parcel src/index.html --open && parcel build src/index.html", 
+    "auto-rebase": "git checkout main && git pull && git checkout edit && git rebase main"
   },
   "devDependencies": {
     "@types/p5": "^1.4.3",
