@@ -15,8 +15,9 @@ const sketch = (p: p5) => {
     //p.windowHeight: 464
     //p.width: 464
     //p.height: 648
-    p.createCanvas(p.windowWidth, p.windowHeight); //キャンバスの作成
+    p.createCanvas(128, 128); //キャンバスの作成
     p.background("#000000"); // 背景色を設定(黒)
+    //p.background("#ffffff"); // 背景色を設定(白)
     p.noStroke(); // 線なし（塗りつぶしのみ）に設定
   };
 
@@ -73,13 +74,27 @@ const sketch = (p: p5) => {
       case 2:
         x--; //左方向
         break;
-      case 3: 
+      case 3:
         y--; //上方向
         break;
       default:
         console.log("this is default");
         break;
     }
+
+    //内接円の外側を黒く塗りつぶし
+    //r: 内接円の半径
+    let r = p.width / 2;
+    p.fill("#000000"); //黒色に設定
+    for (let i = 0; i < p.width; i++) {
+      for (let j = 0; j < p.height; j++) {
+        if (((i - p.width / 2) * (i - p.width / 2) +
+          (j - p.height/2) * (j - p.height/2)) > r * r) {
+          p.ellipse(i, j, 1, 1);
+        }
+      }
+    }
+
 
   };
 }
