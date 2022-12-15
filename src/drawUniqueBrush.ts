@@ -23,6 +23,7 @@ const sketch = (p: p5) => {
 
   let x = 0, y = 0, r = 0;
   const blushSize = 20;
+  let blushMode = 0;
 
   /** フレームごとの描画処理 */
   p.draw = () => {
@@ -34,16 +35,45 @@ const sketch = (p: p5) => {
     var randomColor = "#" + ("000000" + color).slice(-6);
     var colorRandom = p.color(randomColor);
 
+    //ブラシの描画
     if (p.mouseIsPressed) {
-      //xRand: -(blushSize/2)~blushSize/2までのランダムな整数
-      let xRand = Math.floor(p.random(blushSize)) - blushSize/2;
-      let yRand = Math.floor(p.random(blushSize)) - blushSize/2;
-      x = p.mouseX + xRand;
-      y = p.mouseY + yRand;
+      switch (blushMode) {
+        case 0: //消しゴムモード
+          p.fill("#000000");
+          p.ellipse(p.mouseX, p.mouseY, 30);
+          break;
+        case 1: //ブラシモード
+          //xRand: -(blushSize/2)~blushSize/2までのランダムな整数
+          let xRand = Math.floor(p.random(blushSize)) - blushSize / 2;
+          let yRand = Math.floor(p.random(blushSize)) - blushSize / 2;
+          x = p.mouseX + xRand;
+          y = p.mouseY + yRand;
 
-      p.fill(colorRandom);
-      p.ellipse(x, y, 3);
+          p.fill(colorRandom);
+          p.ellipse(x, y, 3);
+          break;
+
+        default:
+          break;
+      }
     }
+
+    if (p.keyIsPressed) {
+      //進路不確定モード
+      // direction++; 
+
+      //モード変更
+      if (p.key === 'e') { blushMode = 0; } //消しゴムモード
+      else if (p.key === 'b') { blushMode = 1; } //ブラシモード
+
+      // 確認用出力
+      /*
+      console.log("i: " + i);
+      console.log("direction: " + direction);
+      console.log("direction % 4: " + direction % 4);
+      */
+    }
+
 
     //p.rect(0, p.height-10, 0, p.height);
     p.fill("#ffffff");
