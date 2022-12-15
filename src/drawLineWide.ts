@@ -22,8 +22,8 @@ const sketch = (p: p5) => {
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
 
     // 点の描画
-    const div = 1;
-    p.ellipse(p.width / 2 + x / div, p.height / 2 + y / div, 1, 1);
+    const div = 5;
+    p.ellipse(p.width / 2 + x / div, p.height / 2 + y / div, 1/div, 1/div);
 
     //i: 割られる数
     //j: 割る数
