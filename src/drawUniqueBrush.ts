@@ -67,6 +67,15 @@ const sketch = (p: p5) => {
         case 'b':
           blushMode = 1;
           break;
+        case '-':
+          blushSize -= 0.3;
+          break;
+        case '+':
+          blushSize += 0.3;
+          break;
+
+        default:
+          break;
       }
     }
 
