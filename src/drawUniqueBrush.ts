@@ -41,7 +41,9 @@ const sketch = (p: p5) => {
           p.fill("#000000");
           p.ellipse(p.mouseX, p.mouseY, blushSize);
           break;
-        case 1: //ブラシモード(ランダムカラー)
+        case 1: //ブラシモード(通常)
+          p.fill(color);
+          p.ellipse(p.mouseX, p.mouseY, blushSize);
           //xRand: -(blushSize/2)~blushSize/2までのランダムな整数
           let xRand = Math.floor(p.random(blushSize)) - blushSize / 2;
           let yRand = Math.floor(p.random(blushSize)) - blushSize / 2;
@@ -80,6 +82,12 @@ const sketch = (p: p5) => {
         case '+':
           blushSize += 0.3;
           break;
+        case 'c':
+          colorCheck++;
+          if (colorCheck % 4 === 0) { color = "#000000" }
+          else if (colorCheck % 4 === 1) { color = "#444444" }
+          else if (colorCheck % 4 === 2) { color = "#888888" }
+          else if (colorCheck % 4 === 3) { color = "#cccccc" }
 
         default:
           break;
