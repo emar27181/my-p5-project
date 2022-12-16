@@ -60,8 +60,14 @@ const sketch = (p: p5) => {
 
     //モード変更
     if (p.keyIsPressed) {
-      if (p.key === 'e') { blushMode = 0; } //消しゴムモード
-      else if (p.key === 'b') { blushMode = 1; } //ブラシモード
+      switch (p.key) {
+        case 'e':
+          blushMode = 0;
+          break;
+        case 'b':
+          blushMode = 1;
+          break;
+      }
     }
 
 
