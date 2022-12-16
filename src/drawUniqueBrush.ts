@@ -28,12 +28,12 @@ const sketch = (p: p5) => {
   /** フレームごとの描画処理 */
   p.draw = () => {
     p.fill("ffffff");
-    // p.ellipse(x, y, r-3, r-3);
 
     //ランダムカラーの生成と宣言
     var color = (Math.random() * 0xFFFFFF | 0).toString(16);
     var randomColor = "#" + ("000000" + color).slice(-6);
     var colorRandom = p.color(randomColor);
+    var mul = 10;
 
     //ブラシの描画
     if (p.mouseIsPressed) {
@@ -50,7 +50,7 @@ const sketch = (p: p5) => {
           y = p.mouseY + yRand;
 
           p.fill(colorRandom);
-          p.ellipse(x, y, 3);
+          p.ellipse(x, y, mul * Math.random(), mul*Math.random());
           break;
 
         default:
@@ -58,28 +58,18 @@ const sketch = (p: p5) => {
       }
     }
 
+    //モード変更
     if (p.keyIsPressed) {
-      //進路不確定モード
-      // direction++; 
-
-      //モード変更
       if (p.key === 'e') { blushMode = 0; } //消しゴムモード
       else if (p.key === 'b') { blushMode = 1; } //ブラシモード
-
-      // 確認用出力
-      /*
-      console.log("i: " + i);
-      console.log("direction: " + direction);
-      console.log("direction % 4: " + direction % 4);
-      */
     }
 
 
     //p.rect(0, p.height-10, 0, p.height);
-    p.fill("#ffffff");
-    p.rect(0, p.height - 10, 100, p.height);
+    p.fill("#cccccc");
+    p.rect(0, p.height - 10, p.width, p.height);
     p.fill("#000000");
-    p.text("(" + p.mouseX + ", " + p.mouseY + ")", 0, p.height);
+    p.text("(" + Math.floor(p.mouseX) + ", " + Math.floor(p.mouseY) + "), mode: " + blushMode, 0, p.height);
   };
 }
 
