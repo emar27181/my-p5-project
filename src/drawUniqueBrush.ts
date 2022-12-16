@@ -34,6 +34,7 @@ const sketch = (p: p5) => {
     var color = (Math.random() * 0xFFFFFF | 0).toString(16);
     var randomColor = "#" + ("000000" + color).slice(-6);
     var colorRandom = p.color(randomColor);
+    var mul = 10;
 
     //ブラシの描画
     if (p.mouseIsPressed) {
@@ -50,7 +51,7 @@ const sketch = (p: p5) => {
           y = p.mouseY + yRand;
 
           p.fill(colorRandom);
-          p.ellipse(x, y, 3);
+          p.ellipse(x, y, mul * Math.random(), mul*Math.random());
           break;
 
         default:
