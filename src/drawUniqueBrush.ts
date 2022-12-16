@@ -52,6 +52,11 @@ const sketch = (p: p5) => {
           p.fill(colorRandom);
           p.ellipse(x, y, mul * Math.random(), mul * Math.random());
           break;
+        case 2: //ブラシモード(組み合わせブラシ)
+          p.fill("red");
+          p.rect(p.mouseX, p.mouseY, blushSize / 4, blushSize);
+          p.fill("white");
+          p.rect(p.mouseX, p.mouseY + blushSize / 2, blushSize / 4, blushSize / 4);
 
         default:
           break;
@@ -67,6 +72,10 @@ const sketch = (p: p5) => {
         case 'b':
           blushMode = 1;
           break;
+        case 'c':
+          blushMode = 2;
+          break;
+
         case '-':
           blushSize -= 0.3;
           break;
