@@ -89,11 +89,12 @@ const sketch = (p: p5) => {
     }
 
 
-    //p.rect(0, p.height-10, 0, p.height);
+    //データ表示バーの描画
     p.fill("#cccccc");
     p.rect(0, p.height - 10, p.width, p.height);
     p.fill("#000000");
-    p.text("(" + Math.floor(p.mouseX) + ", " + Math.floor(p.mouseY) + "), mode: " + blushMode, 0, p.height);
+    p.text("(" + Math.floor(p.mouseX) + ", " + Math.floor(p.mouseY) + "), mode: " + blushMode +
+      ", size: " + Math.floor(blushSize), 0, p.height);
   };
 }
 
