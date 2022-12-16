@@ -77,10 +77,10 @@ const sketch = (p: p5) => {
 
 
     //p.rect(0, p.height-10, 0, p.height);
-    p.fill("#ffffff");
-    p.rect(0, p.height - 10, 100, p.height);
+    p.fill("#cccccc");
+    p.rect(0, p.height - 10, p.width, p.height);
     p.fill("#000000");
-    p.text("(" + p.mouseX + ", " + p.mouseY + ")", 0, p.height);
+    p.text("(" + Math.floor(p.mouseX) + ", " + Math.floor(p.mouseY) + "), mode: " + blushMode, 0, p.height);
   };
 }
 
