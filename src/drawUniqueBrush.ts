@@ -11,7 +11,7 @@ const sketch = (p: p5) => {
 
   /** 初期化処理 */
   p.setup = () => {
-    //デフォルト値(?)一覧
+    //デフォルト値一覧
     //p.windowWidth: 464
     //p.windowHeight: 464
     //p.width: 464
@@ -22,8 +22,7 @@ const sketch = (p: p5) => {
   };
 
   let x = 0, y = 0, r = 0;
-  const blushSize = 20;
-  let blushMode = 0;
+  let blushSize = 20, blushMode = 2, eraserSize = 30;
 
   /** フレームごとの描画処理 */
   p.draw = () => {
@@ -40,18 +39,22 @@ const sketch = (p: p5) => {
       switch (blushMode) {
         case 0: //消しゴムモード
           p.fill("#000000");
-          p.ellipse(p.mouseX, p.mouseY, 30);
+          p.ellipse(p.mouseX, p.mouseY, blushSize);
           break;
-        case 1: //ブラシモード
+        case 1: //ブラシモード(ランダムカラー)
           //xRand: -(blushSize/2)~blushSize/2までのランダムな整数
           let xRand = Math.floor(p.random(blushSize)) - blushSize / 2;
           let yRand = Math.floor(p.random(blushSize)) - blushSize / 2;
           x = p.mouseX + xRand;
           y = p.mouseY + yRand;
-
           p.fill(colorRandom);
-          p.ellipse(x, y, mul * Math.random(), mul*Math.random());
+          p.ellipse(x, y, mul * Math.random(), mul * Math.random());
           break;
+        case 2: //ブラシモード(組み合わせブラシ)
+          p.fill("red");
+          p.rect(p.mouseX, p.mouseY, blushSize / 4, blushSize);
+          p.fill("white");
+          p.rect(p.mouseX, p.mouseY + blushSize / 2, blushSize / 4, blushSize / 4);
 
         default:
           break;
@@ -60,16 +63,36 @@ const sketch = (p: p5) => {
 
     //モード変更
     if (p.keyIsPressed) {
-      if (p.key === 'e') { blushMode = 0; } //消しゴムモード
-      else if (p.key === 'b') { blushMode = 1; } //ブラシモード
+      switch (p.key) {
+        case 'e':
+          blushMode = 0;
+          break;
+        case 'b':
+          blushMode = 1;
+          break;
+        case 'c':
+          blushMode = 2;
+          break;
+
+        case '-':
+          blushSize -= 0.3;
+          break;
+        case '+':
+          blushSize += 0.3;
+          break;
+
+        default:
+          break;
+      }
     }
 
 
-    //p.rect(0, p.height-10, 0, p.height);
+    //データ表示バーの描画
     p.fill("#cccccc");
     p.rect(0, p.height - 10, p.width, p.height);
     p.fill("#000000");
-    p.text("(" + Math.floor(p.mouseX) + ", " + Math.floor(p.mouseY) + "), mode: " + blushMode, 0, p.height);
+    p.text("(" + Math.floor(p.mouseX) + ", " + Math.floor(p.mouseY) + "), mode: " + blushMode +
+      ", size: " + Math.floor(blushSize), 0, p.height);
   };
 }
 
