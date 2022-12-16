@@ -69,11 +69,20 @@ const sketch = (p: p5) => {
         case 'e':
           blushMode = 0;
           break;
-        case 'b':
+        case '1':
           blushMode = 1;
           break;
-        case 'c':
+        case '2':
           blushMode = 2;
+          break;
+        case '3':
+          blushMode = 3;
+          break;
+        case '4':
+          blushMode = 4;
+          break;
+        case '5':
+          blushMode = 5;
           break;
 
         case '-':
