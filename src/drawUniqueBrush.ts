@@ -28,7 +28,6 @@ const sketch = (p: p5) => {
   /** フレームごとの描画処理 */
   p.draw = () => {
     p.fill("ffffff");
-    // p.ellipse(x, y, r-3, r-3);
 
     //ランダムカラーの生成と宣言
     var color = (Math.random() * 0xFFFFFF | 0).toString(16);
@@ -59,20 +58,10 @@ const sketch = (p: p5) => {
       }
     }
 
+    //モード変更
     if (p.keyIsPressed) {
-      //進路不確定モード
-      // direction++; 
-
-      //モード変更
       if (p.key === 'e') { blushMode = 0; } //消しゴムモード
       else if (p.key === 'b') { blushMode = 1; } //ブラシモード
-
-      // 確認用出力
-      /*
-      console.log("i: " + i);
-      console.log("direction: " + direction);
-      console.log("direction % 4: " + direction % 4);
-      */
     }
 
 
