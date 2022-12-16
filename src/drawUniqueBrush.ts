@@ -22,7 +22,7 @@ const sketch = (p: p5) => {
   };
 
   let x = 0, y = 0, r = 0;
-  const blushSize = 20;
+  let blushSize = 20;
   let blushMode = 0;
 
   /** フレームごとの描画処理 */
@@ -50,7 +50,7 @@ const sketch = (p: p5) => {
           y = p.mouseY + yRand;
 
           p.fill(colorRandom);
-          p.ellipse(x, y, mul * Math.random(), mul*Math.random());
+          p.ellipse(x, y, mul * Math.random(), mul * Math.random());
           break;
 
         default:
