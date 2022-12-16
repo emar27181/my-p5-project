@@ -23,6 +23,7 @@ const sketch = (p: p5) => {
 
   let x = 0, y = 0, r = 0;
   let blushSize = 20, blushMode = 2, eraserSize = 30;
+  let color = "#000000", colorCheck = 0;
 
   /** フレームごとの描画処理 */
   p.draw = () => {
@@ -44,6 +45,8 @@ const sketch = (p: p5) => {
         case 1: //ブラシモード(通常)
           p.fill(color);
           p.ellipse(p.mouseX, p.mouseY, blushSize);
+          break;
+        case 2: //ブラシモード(ランダムカラー)
           //xRand: -(blushSize/2)~blushSize/2までのランダムな整数
           let xRand = Math.floor(p.random(blushSize)) - blushSize / 2;
           let yRand = Math.floor(p.random(blushSize)) - blushSize / 2;
@@ -52,11 +55,12 @@ const sketch = (p: p5) => {
           p.fill(colorRandom);
           p.ellipse(x, y, mul * Math.random(), mul * Math.random());
           break;
-        case 2: //ブラシモード(組み合わせブラシ)
+        case 3: //ブラシモード(組み合わせブラシ)
           p.fill("red");
           p.rect(p.mouseX, p.mouseY, blushSize / 4, blushSize);
           p.fill("white");
           p.rect(p.mouseX, p.mouseY + blushSize / 2, blushSize / 4, blushSize / 4);
+          break;
 
         default:
           break;
@@ -92,11 +96,12 @@ const sketch = (p: p5) => {
           blushSize += 0.3;
           break;
         case 'c':
-          colorCheck++;
+          if (p.keyIsPressed) { colorCheck++; }
           if (colorCheck % 4 === 0) { color = "#000000" }
           else if (colorCheck % 4 === 1) { color = "#444444" }
           else if (colorCheck % 4 === 2) { color = "#888888" }
           else if (colorCheck % 4 === 3) { color = "#cccccc" }
+          break;
 
         default:
           break;
@@ -109,7 +114,7 @@ const sketch = (p: p5) => {
     p.rect(0, p.height - 10, p.width, p.height);
     p.fill("#000000");
     p.text("(" + Math.floor(p.mouseX) + ", " + Math.floor(p.mouseY) + "), mode: " + blushMode +
-      ", size: " + Math.floor(blushSize), 0, p.height);
+      ", size: " + Math.floor(blushSize) + ", color: " + color, 0, p.height);
   };
 }
 
