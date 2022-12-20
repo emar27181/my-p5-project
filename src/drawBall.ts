@@ -17,12 +17,44 @@ const sketch = (p: p5) => {
     p.createCanvas(p.windowWidth, p.windowHeight); //キャンバスの作成
     p.background("#000000"); // 背景色を設定(黒)
     p.noStroke(); // 線なし（塗りつぶしのみ）に設定
+
   };
+
+  let isDotMode = true;
+  let ballSize = 30;
+  let x = 0, y = 0, dx = 10, dy = 10;
 
   /** フレームごとの描画処理 */
   p.draw = () => {
+    if (isDotMode) {
+      p.fill(0, 0, 0, 50);
+      p.rect(0, 0, p.width, p.height);
+    }
+
+    if (p.keyIsPressed && p.key === "d") {
+      if (isDotMode === false) { isDotMode = true; }
+      else { isDotMode = false; }
+    }
+
+    x += dx;
+    y += dy;
+
+    if (x > p.width || x < 0) {
+      dx = -dx;
+    }
+    else if (y > p.height || y < 0) {
+      dy = -dy;
+    }
+
     p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
-    p.ellipse(0, 0, 100, 100); // 楕円の描画(左上)
+    p.ellipse(x, y, ballSize);
+
+    //データ表示バーの描画
+    p.fill("#cccccc");
+    p.rect(0, p.height - 10, p.width, p.height);
+    p.fill("#000000");
+    //p.text("(" + Math.floor(x) + ", " + Math.floor(y) + ")", 0, p.height);
+    p.text("(" + Math.floor(x) + ", " + Math.floor(y) + ") p.width: " + p.width + ", p.windowWidth: " + p.windowWidth, 0, p.height);
   };
 }
 
