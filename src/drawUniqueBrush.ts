@@ -33,7 +33,7 @@ const sketch = (p: p5) => {
     var color = (Math.random() * 0xFFFFFF | 0).toString(16);
     var randomColor = "#" + ("000000" + color).slice(-6);
     var colorRandom = p.color(randomColor);
-    var mul = 10;
+    var mul = 5;
 
     //ブラシの描画
     if (p.mouseIsPressed) {
@@ -53,7 +53,7 @@ const sketch = (p: p5) => {
           x = p.mouseX + xRand;
           y = p.mouseY + yRand;
           p.fill(colorRandom);
-          p.ellipse(x, y, mul * Math.random(), mul * Math.random());
+          p.rect(x, y, mul * Math.random(), mul * Math.random());
           break;
         case 3: //ブラシモード(組み合わせブラシ)
           p.fill("red");
