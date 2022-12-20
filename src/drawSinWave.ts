@@ -24,9 +24,20 @@ const sketch = (p: p5) => {
     let x = 0;
     let direction = 0;
     let amplitude = 50;
+    let isDotMode = true;
 
     /** フレームごとの描画処理 */
     p.draw = () => {
+        if (isDotMode) {
+            p.fill(0, 0, 0, 50);
+            p.rect(0, 0, p.width, p.height);
+        }
+
+        if (p.keyIsPressed && p.key === "d") {
+            if (isDotMode === false) { isDotMode = true; }
+            else { isDotMode = false; }
+        }
+
         p.fill(p.lerpColor(color2, color1, color1amount)); // 塗り色の設定
 
         //進路の決定
