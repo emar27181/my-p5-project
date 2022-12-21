@@ -22,8 +22,7 @@ const sketch = (p: p5) => {
   };
 
   let ballSize = 1;
-  let v = 1;
-  let x = 10, y = 0, dx = v / 2, dy = v;
+  let isDotMode = true;
 
   /** フレームごとの描画処理 */
   p.draw = () => {
@@ -38,6 +37,9 @@ const sketch = (p: p5) => {
       else if (p.key === 'E' || p.key === 'e') { dx = v; dy = -v; }
       else if (p.key === 'Q' || p.key === 'q') { dx = -v; dy = -v; }
       else if (p.key === 'K' || p.key === 'k'){
+        if(isDotMode === true){isDotMode = false;}
+        else{isDotMode = true;}
+      }
     }
 
     if (x > p.width || x < 0) {
@@ -67,6 +69,11 @@ const sketch = (p: p5) => {
       */
     }
 
+    //背景の描画
+    if (isDotMode) {
+      p.fill(colorBackGround);
+      p.rect(0, 0, p.width, p.height);
+    }
     x += dx;
     y += dy;
 
