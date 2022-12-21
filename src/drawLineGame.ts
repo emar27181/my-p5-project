@@ -14,10 +14,11 @@ const sketch = (p: p5) => {
     //p.windowHeight: 464
     //p.width: 464
     //p.height: 648
-    p.createCanvas(p.windowWidth, p.windowHeight); //キャンバスの作成
+    p.createCanvas(256, 256); //キャンバスの作成
     p.background(colorBackGround); // 背景色を設定(黒)
     //p.background("#ffffff"); // 背景色を設定(白)
     p.noStroke(); // 線なし（塗りつぶしのみ）に設定
+    p.noCursor();
   };
 
   let ballSize = 1;
