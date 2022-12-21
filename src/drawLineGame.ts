@@ -14,15 +14,17 @@ const sketch = (p: p5) => {
     //p.windowHeight: 464
     //p.width: 464
     //p.height: 648
-    p.createCanvas(p.windowWidth, p.windowHeight); //キャンバスの作成
+    p.createCanvas(256, 256); //キャンバスの作成
     p.background(colorBackGround); // 背景色を設定(黒)
     //p.background("#ffffff"); // 背景色を設定(白)
     p.noStroke(); // 線なし（塗りつぶしのみ）に設定
+    p.noCursor();
   };
 
   let ballSize = 1;
-  let v = 1;
-  let x = 10, y = 0, dx = v / 2, dy = v;
+  let v = 3;
+  let x = 10, y = 0, dx = v, dy = v;
+  let isDotMode = true;
 
   /** フレームごとの描画処理 */
   p.draw = () => {
@@ -32,14 +34,17 @@ const sketch = (p: p5) => {
       else if (p.key === 'A' || p.key === 'a') { dx = -v; dy = 0; }
       else if (p.key === 'S' || p.key === 's') { dx = 0; dy = v; }
       else if (p.key === 'D' || p.key === 'd') { dx = v; dy = 0; }
+      else if (p.key === 'C' || p.key === 'c') { dx = v; dy = v; }
+      else if (p.key === 'Z' || p.key === 'z') { dx = -v; dy = v; }
+      else if (p.key === 'E' || p.key === 'e') { dx = v; dy = -v; }
+      else if (p.key === 'Q' || p.key === 'q') { dx = -v; dy = -v; }
+      else if (p.key === 'K' || p.key === 'k'){
+        if(isDotMode === true){isDotMode = false;}
+        else{isDotMode = true;}
+      }
     }
 
-    if (x > p.width || x < 0) {
-      dx = -dx;
-    }
-    else if (y > p.height || y < 0) {
-      dy = -dy;
-    }
+
 
 
     //一定確率で進路変更(未実装)
@@ -61,19 +66,36 @@ const sketch = (p: p5) => {
       */
     }
 
+    //背景の描画
+    if (isDotMode) {
+      p.fill(colorBackGround);
+      p.rect(0, 0, p.width, p.height);
+    }
+    //壁の描画
+    p.fill(color1);
+    p.rect(p.mouseX, p.mouseY, 30, 10);
+
     x += dx;
     y += dy;
 
     //次の座標が通過済みだった場合反射
     //背景は黒なので、通ってないと(0,0,0,255)がその点に入っている
-    let nextColor = p.get(x + dx, y + dy);
+    let nextColorX = p.get(x + dx, y);
+    let nextColorY = p.get(x, y + dy);
 
     //if (nextColor != (0, 0, 0, 255)) { v = -v;}
-   //if (nextColor != colorBackGround) { }
-   if (nextColor[0]!=0){
-      v = -v;
-   }
+    //if (nextColor != colorBackGround) { }
+    if (nextColorX[0] != 0) { dx = -dx; }
+    else if (nextColorY[0] != 0) { dy = -dy; }
 
+    if (x > p.width || x < 0) {
+      dx = -dx;
+    }
+    else if (y > p.height || y < 0) {
+      dy = -dy;
+    }
+
+    //ボールの描画
     p.fill(color1); // 塗り色の設定
     p.ellipse(x, y, ballSize);
 
@@ -84,7 +106,7 @@ const sketch = (p: p5) => {
     p.fill(colorBackGround);
     //p.text("(" + Math.floor(x) + ", " + Math.floor(y) + ")", 0, p.height);
     //p.text("(" + Math.floor(x) + ", " + Math.floor(y) + ") p.width: " + p.width + ", p.windowWidth: " + p.windowWidth, 0, p.height);
-    p.text("nextColor: " + nextColor[0], 0, p.height);
+
   };
 }
 
