@@ -21,7 +21,7 @@ const sketch = (p: p5) => {
     p.noCursor();
   };
 
-  let ballSize = 1;
+  let ballSize = 10;
   let v = 3;
   let x = 10, y = 0, dx = v, dy = v;
   let isDotMode = true;
