@@ -33,6 +33,11 @@ const sketch = (p: p5) => {
       else if (p.key === 'A' || p.key === 'a') { dx = -v; dy = 0; }
       else if (p.key === 'S' || p.key === 's') { dx = 0; dy = v; }
       else if (p.key === 'D' || p.key === 'd') { dx = v; dy = 0; }
+      else if (p.key === 'C' || p.key === 'c') { dx = v; dy = v; }
+      else if (p.key === 'Z' || p.key === 'z') { dx = -v; dy = v; }
+      else if (p.key === 'E' || p.key === 'e') { dx = v; dy = -v; }
+      else if (p.key === 'Q' || p.key === 'q') { dx = -v; dy = -v; }
+      else if (p.key === 'K' || p.key === 'k'){
     }
 
     if (x > p.width || x < 0) {
