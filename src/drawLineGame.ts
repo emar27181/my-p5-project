@@ -66,12 +66,19 @@ const sketch = (p: p5) => {
 
     //次の座標が通過済みだった場合反射
     //背景は黒なので、通ってないと(0,0,0,255)がその点に入っている
-    let nextColor = p.get(x + dx, y + dy);
+    let nextColorX = p.get(x + dx, y);
+    let nextColorY = p.get(x, y + dy);
 
     //if (nextColor != (0, 0, 0, 255)) { v = -v;}
    //if (nextColor != colorBackGround) { }
-   if (nextColor[0]!=0){
-      v = -v;
+    if (nextColorX[0] != 0) { dx = -dx; }
+    else if (nextColorY[0] != 0) { dy = -dy; }
+
+    if (x > p.width || x < 0) {
+      dx = -dx;
+    }
+    else if (y > p.height || y < 0) {
+      dy = -dy;
    }
 
     p.fill(color1); // 塗り色の設定
