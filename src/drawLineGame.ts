@@ -67,21 +67,24 @@ const sketch = (p: p5) => {
     //次の座標が通過済みだった場合反射
     //背景は黒なので、通ってないと(0,0,0,255)がその点に入っている
     let nextColor = p.get(x + dx, y + dy);
-    /*
-    if(nextColor != (0,0,0,255)){}
-    */
+
+    //if (nextColor != (0, 0, 0, 255)) { v = -v;}
+   //if (nextColor != colorBackGround) { }
+   if (nextColor[0]!=0){
+      v = -v;
+   }
 
     p.fill(color1); // 塗り色の設定
     p.ellipse(x, y, ballSize);
 
     //データ表示バーの描画
-    
+
     p.fill("#cccccc");
     p.rect(0, p.height - 10, p.width, p.height);
     p.fill(colorBackGround);
     //p.text("(" + Math.floor(x) + ", " + Math.floor(y) + ")", 0, p.height);
     //p.text("(" + Math.floor(x) + ", " + Math.floor(y) + ") p.width: " + p.width + ", p.windowWidth: " + p.windowWidth, 0, p.height);
-    p.text("nextColor: " + nextColor, 0, p.height);
+    p.text("nextColor: " + nextColor[0], 0, p.height);
   };
 }
 
