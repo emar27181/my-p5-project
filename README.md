@@ -18,6 +18,9 @@
 
 - bash上で`$ npm run build` の入力でbuild(ファイルの再読み込み)
 - bash上で`$ npm run dev` の入力でブラウザの立ち上げ
+
+![image](/uploads/d2216dd8d82bc5268f77775c7406baa4/image.png)
+
 - ブラウザ上でF12を押し、consoleを表示
 
 <br>
