@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/home", function(reqest, response){
-    response.sendFile('/mnt/d/ryunosuke/my_WSL_dir/my-p5-project/src/index.html');
+    response.sendFile('src/index.html'); //これだと開く端末によって保存先が異なり上手く認識されない
 });
 
 app.listen(PORT, () => {
